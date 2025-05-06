@@ -13,6 +13,6 @@ class Shape
        Shape(string c) : color(c) {} // constructor with color
        string get_color() { return color; } // getter for color
        void set_color(string c) { color = c; } // setter for color
-       double area() { return 0; } 
+       virtual double area() { return 0; } 
 };
 #endif

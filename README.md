@@ -12,13 +12,14 @@ You get a compiler error if your constructor doesn't invoke an existing
 parent constructor.
 Therefore, it is recommended to always include a default constructor in a class for purposes of inheritance (note the Shape default constructor does nothing and yet it serves an important purpose.)
 
-OVERRIDING functions
-if the child class defines a function with identical signature to parent function, this is calling overriding the function, and the child function gets
-called (the parent function is inaccessible to a child object).
 
 OVERLOADING
 if the child class defines a function with the same name but different param lists, both functions are accessible to a child object only if the parent function is explicity
 brought into the child class with a 'using' directive.
+
+OVERRIDING functions
+if the child class defines a function with identical signature to parent function, this is calling overriding the function, and the child function gets
+called.
 
 Polymorphism, virtual functions, abstract classes
 
@@ -37,6 +38,7 @@ example: area method in the Shape class returns 0
 the area method in the Rectangle class calculates the area.
 
 In our example, we saw that the Shape class's area function is called.
-In general, the base class's function is called unless the function is declared to be virtual 
-(next time.)
+In general, the base class's function is called unless the function is declared to be virtual.
+If the keyword virtual is used on the function in the parent class, this will
+cause "late binding" and the actual class's function will be called.
 

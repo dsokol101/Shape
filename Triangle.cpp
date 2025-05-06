@@ -1,5 +1,5 @@
 #include "Triangle.h"
-
+#include <cmath> // for sqrt functionS
 void Triangle::set_sides(double s1, double s2, double s3)
 {
     side1 = s1;
