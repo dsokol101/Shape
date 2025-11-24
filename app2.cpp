@@ -3,7 +3,6 @@
 #include "Triangle.h"
 #include <iostream>
 using namespace std;
-// 4/29/2025
 // we would like to try out the Rectangle class that
 // uses inheritance
 
@@ -12,6 +11,7 @@ int main()
     // create and initialize an object on the stack
     Rectangle rect; // default constructor
     cout << " color of rect (default): " << rect.get_color() << endl;
+    /** 
     rect.set_values(3, 4);
     cout << "area: " << rect.area()  << endl;
     string color = "red";
@@ -69,5 +69,6 @@ int main()
         cout << "area: " << shapeArray[i]->area() << endl; // virtual function
         // causes late binding
     }
+        */
     return 0;
 }

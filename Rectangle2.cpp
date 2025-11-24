@@ -5,11 +5,11 @@
 // memberwise initialization
 // before you enter the body of the constructor,
 // the members are already initialized
-Rectangle::Rectangle() :  width(1.0), height(1.0) {
+Rectangle::Rectangle() : Shape(), width(1.0), height(1.0) {}
    // color = "blue"; private field is inaccessible
    // set_color("red"); // public members can be called
     // as if they are your own.
-}
+
 // explicitly call your base class constructor by saying Shape(color)
 Rectangle::Rectangle(double w, double h, string color) : Shape(color), width(w), height(h) {
     // this constructor initializes the base class

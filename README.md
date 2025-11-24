@@ -1,8 +1,6 @@
 Shape class and Rectangle class
-This is the code from class 4/29 and 5/1/2025
+This is the code from class 
 Inheritance
-
-notes from May 1st (notes from 4/29 are in the .h and .cpp files)
 
 If you do not put in a call to the super class's constructor, the default
 constructor of the super class will be called. The compiler puts in 
