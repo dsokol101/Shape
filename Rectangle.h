@@ -34,6 +34,6 @@ public:
   void set_values(double, double);
   using Shape::set_color; // using declaration to bring the base class set_color into scope
   void set_color(int c); // overloads the set_color function in the base class
-  double area();
+  double area() override; // there will be no access to the parent's area function from outside the class
 };
 #endif

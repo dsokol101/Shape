@@ -5,57 +5,53 @@
 using namespace std;
 // we would like to try out the Rectangle class that
 // uses inheritance
-
+void printArea(Shape *s);
 int main()
 {
     // create and initialize an object on the stack
     Rectangle rect; // default constructor
     cout << " color of rect (default): " << rect.get_color() << endl;
-    /** 
+    rect.set_color(2);
+    cout << " color of rect (after set_color(2)): " << rect.get_color() << endl;
+    rect.set_color("purple"); // will call my inherited set_color from Shape
+    cout << " color of rect (after set_color(\"purple\")): " << rect.get_color() << endl;
+
     rect.set_values(3, 4);
     cout << "area: " << rect.area()  << endl;
-    string color = "red";
-    rect.set_color(color); // calls the parent's class set_color
-    cout << " the first time (red): " << rect.get_color() << endl;
-    rect.set_color(2); // calls the overloaded funtion in the derived class 
-    cout << " the second time (2): " << rect.get_color() << endl;
     
-    Rectangle rect6(5, 6, "orange"); 
-    
-    cout << "rect6, width: " << rect6.get_width() << " length: " << rect6.get_height() << endl;
-    cout <<  " color: " << rect6.get_color() << endl;  
-    cout << "area: " << rect6.area() << endl; // calls area() in the derived class
-    
-    Rectangle* rectPtr = &rect6;
-    cout << "color: " << rectPtr->get_color() << endl;
-    cout << "width: " << rectPtr->get_width() << endl;
-    cout << "height: " << rectPtr->get_height() << endl;
-
-    Rectangle & rectRef = rect6; // reference to an object (alias)
-    cout << "color: " << rectRef.get_color() << endl;
-    cout << "width: " << rectRef.get_width() << endl;
-    cout << "height: " << rectRef.get_height() << endl;
-    
+    Shape *shapePtr = &rect; // upcasting, polymorphism
+    Shape &shapeRef = rect; // upcasting, polymorphism
+    // what functions can I call on shapePtr?
+    cout << " area via shapePtr: " << shapePtr->area() << endl;
+    cout << " area via shapeRef: " << shapeRef.area() << endl;
+      
     // create and initialize an object on the heap (dynamic memory)
-    Rectangle* rectPtr2 = new Rectangle(7, 8, "blue");
-    cout << "color: " << rectPtr2->get_color() << endl;
-    cout << "width: " << rectPtr2->get_width() << endl; 
-
-    Shape* shapePtr = new Rectangle(); // upcasting
+    Rectangle* rectPtr2 = new Rectangle(7, 8, "yellow");
+    cout << "color: " << rectPtr2->get_color() << endl; // function in Shape class
+    cout << "width: " << rectPtr2->get_width() << endl; // function in Rectangle class
+    // typically, you would not do the following since it is dangerous to have 2 pointers
+    // within a function pointing to the same object.
+    // However, we are doing this to show that you are allowed to upcast, and typical
+    // use of this is passing a parameter, as in the printArea function.
+    shapePtr = rectPtr2; // upcasting
+    // new Rectangle(); // upcasting
     cout << "color: " << shapePtr->get_color() << endl;
-    cout << "area: LINE 46 " << shapePtr->area() << endl; 
+    cout << "area of rectangle object: "; // << shapePtr->area() << endl; 
+    printArea(shapePtr);
     // calls the base class area function UNLESS it is virtual
     // in which case we will have "dynamic binding" and the child class
     // area function will be called
     // this is called "dynamic binding" or "late binding"
     
     delete rectPtr2;
-    delete shapePtr; // deleting the Rectangle object on the heap
+     
     shapePtr = new Circle(5,"red");
-    cout << shapePtr->area() << endl;
+    cout << "aread of circle object: ";
+    // << shapePtr->area() << endl;
+    printArea(shapePtr);
     delete shapePtr; // deleting the Circle object on the heap
     shapePtr = new Triangle(5,6,7,"blue");    
-    cout << shapePtr->area() << endl;
+    cout << "area of triangle object: " <<  shapePtr->area() << endl;
     delete shapePtr; // deleting the Triangle object on the heap
     // Circle * circlePointer = new Shape(); downcasting is NOT allowed
     // I want a container that holds Shape objects (Circle, Rectangle, Triangle
@@ -69,6 +65,9 @@ int main()
         cout << "area: " << shapeArray[i]->area() << endl; // virtual function
         // causes late binding
     }
-        */
     return 0;
+}
+/** showing polymorphism  */
+void printArea(Shape *s) {
+    cout << "Area: " << s->area() << endl;
 }

@@ -40,3 +40,7 @@ In general, the base class's function is called unless the function is declared 
 If the keyword virtual is used on the function in the parent class, this will
 cause "late binding" and the actual class's function will be called.
 
+We illustrated polymorphism in app2.cpp by
+ 1. assigning within main (usually not done)
+ 2. parameter passing to printArea function
+ 3. an array of type pointer to Shape that holds all different kinds of Shape objects.
